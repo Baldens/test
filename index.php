@@ -5,13 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="sty.css" rel="stylesheet" />
-    <script src="lib/jquery-3.6.0.min.js"></script>
-
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="stylies.css">
+    
 
 </head>
 <body>
@@ -48,7 +44,7 @@
         </div>
     </div>
     <div class="route-url">
-        <a class="url-a-calcses" href="#">Главная</a> - <a class="url-a-calcses" href="#">Вклады</a> - <a class="url-a-calc" href="#">Калькулятор</a>
+        <a class="url-a-with-decor" href="#">Главная</a> - <a class="url-a-with-decor" href="#">Вклады</a> - <a class="url-a-with-nodecor" href="#">Калькулятор</a>
     </div>
 
     <div class="form-calc">
@@ -71,7 +67,7 @@
 
             
 
-            <form method="POST" action="calc.php">
+            <form method="POST" id="calc_form">
 
                 <div class="item-calc-input">
                     <div><input class="input-refr" type="text" id="datepicker"></div>
@@ -92,10 +88,10 @@
 
                 <div class="item-calc-scale">
                     <div class="scale-option">
-                        <input class="range-calc num2" id="rangeOne" type="range" value="1000" min="1000" max="3000000" step="1">
+                        <input class="range-calc range-num1" id="rangeOne" type="range" value="1000" min="1000" max="3000000" step="1">
                         <span class="span-rub-under-input-range-right">3 000 000</span>
                         <span class="span-rub-under-input-range-left">1тыс. руб</span>
-                        <input class="range-calc num1" id="rangeTwo" type="range" value="1000"  min="1000" max="3000000" step="1">
+                        <input class="range-calc range-num2" id="rangeTwo" type="range" value="1000"  min="1000" max="3000000" step="1">
                         <span class="span-rub-under-input-range-right">3 000 000</span>
                         <span class="span-rub-under-input-range-left">1тыс. руб</span>
 
@@ -122,6 +118,9 @@
         <a href="#">Друзья</a>
         <a href="#">Интернет-банк</a>
     </footer>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -42,14 +42,14 @@ $(document).ready(function(){
         }
     }
 
-    $('.num1').on('input', function(){
+    $('.range-num2').on('input', function(){
         var x = this.value;
-        replaceStyle('num1', 'input-sum-person', x, 'route');
+        replaceStyle('range-num2', 'input-sum-person', x, 'route');
     });
 
-    $('.num2').on('input', function(){
+    $('.range-num1').on('input', function(){
         var x = this.value;
-        replaceStyle('num2', 'input-sum', x, 'route');
+        replaceStyle('range-num1', 'input-sum', x, 'route');
     });
 
     
@@ -59,7 +59,6 @@ $(document).ready(function(){
     $('#summVckl').on('input', function(){
         var variableSumm = $('#summVckl').val();
         var routeVariableSumm = document.getElementById('rangeOne');
-        console.log(variableSumm.match(regex));
         if(variableSumm == '' || variableSumm < minVariable || variableSumm > maxVariable || variableSumm.match(regex) != null){
             $('.warrior1').html('!');
             boolClickOne = false;
@@ -104,13 +103,11 @@ $(document).ready(function(){
                 boolClickThree = true;
                 $('.input-submit-calc-form').on('click', function(){
                     if(($( "#datepicker" ).val() == '') || (boolClickOne == false) || (boolClickTwo == false)){
-                        console.log(($( "#datepicker" ).val() == '') + ' - ' + (boolClickOne == false) + ' - ' + (boolClickTwo == false));
                         $('.error-input').html('Какое то поле не заполнено, либо не правильно заполнен!');
                         $('.result-calc-num').html('Ошибка!');
                     }else if(boolClickOne == true || boolClickTwo == true){
                         for (let index = 0; index < 12 * $('#selectYear').val(); index++) {
                             daysInMonth = new Date(year, month + index, 0).getDate();
-                            console.log(daysInMonth)
                             massDays.push(daysInMonth);
                         }
                         $.ajax({    
@@ -118,12 +115,8 @@ $(document).ready(function(){
                             method: 'post',
                             dataType: 'html',
                             data: {
-                                datepicker: $('#datepicker').val(),
                                 summVckl: $('#summVckl').val(),
                                 summAddVckl: $('#summAddVckl').val(),
-                                selectYear: $('#selectYear').val(),
-                                radioActive: $('#radioActive').val(),
-                                daysInMonth: daysInMonth,
                                 massDays: massDays,
                             },
                             success: function(data){
@@ -143,10 +136,8 @@ $(document).ready(function(){
     } );
 
     $('.input-submit-calc-form').on('click', function(){
-        
         if($( "#datepicker" ).val() == ''){
             boolClickThree = false;
-            console.log($( "#datepicker" ).val())
             alert('Вы не выбрали дату.')
         }
     });
