@@ -5,122 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="stylies.css">
-    
-
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="head">
-            <div class="logo">
-                <img src="photo/logo.png">
-                <p>WORLD BANK <br> Publications</p>
-            </div>
-            <ul class="num-telephone">
-                <li>8-800-100-5005</li>
-                <li>+7 (3452)522-000</li>
-            </ul>
-        </div>
-    </header>
-    <div class="menu-header">
-        <div class="contain-for-a">
-            <a href="#">Кредитные карты</a>
-        </div>
-        <div class="contain-for-aa">
-            <a href="#">Вклады</a>
-        </div>
-        <div class="contain-for-aa">
-            <a href="#">Дебетовая карта</a>
-        </div>
-        <div class="contain-for-aa">
-            <a href="#">Страхование</a>
-        </div>
-        <div class="contain-for-aa">
-            <a href="#">Друзья</a>
-        </div>
-        <div class="contain-for-aaa">
-            <a href="#">Интернет-банк</a>
-        </div>
-    </div>
-    <div class="route-url">
-        <a class="url-a-with-decor" href="#">Главная</a> - <a class="url-a-with-decor" href="#">Вклады</a> - <a class="url-a-with-nodecor" href="#">Калькулятор</a>
-    </div>
+    
+</body>
+</html>
 
-    <div class="form-calc">
-    <span class="error-input"></span>
+<?php
+    $link = 'news.php';
+    $a = "Первой советской открытой книгой по программированию, электронным вычислительным машинам и их различным применениям была выпущенная в начале 1956 года монография Анатолия Ивановича Китова «Электронные цифровые машины»[7][8]. Заключительная треть этой книги посвящена «Неарифметическому использованию ЭВМ» — применению компьютеров для управления производственными процессами, решению задач экономики, искусственного интеллекта, машинного перевода и т. д. Книга переведена на несколько иностранных языков и опубликована в США, Китае, Польше, Чехословакии и других странах. Об этой книге Президент Академии наук СССР Г. И. Марчук писал «Вышедшая в 1956 году книга А. И. Китова „Электронные цифровые машины“ фактически сделала переворот в сознании многих исследователей». Выдающийся учёный современности В. М. Глушков отмечал: «А. И. Китов — признанный пионер кибернетики, заложивший основы отечественной школы программирования и применения ЭВМ для решения военных и народнохозяйственных задач. Я сам, как и десятки тысяч других специалистов, получил свои начальные компьютерные знания из его книги „Электронные цифровые машины“ — первой отечественной книги по ЭВМ и программированию». Профессор Мичиганского университета Джон Карр (John Carr, USA) в своей монографии «Лекции по программированию» (1958, США) писал о том, что, проанализировав по рассматриваемой тематике порядка 150 выпущенных в мире на тот момент времени книг, вопросы как ручного, так и автоматического программирования лучше всего освещены в книге Анатолия Китова.";
+    $b = mb_substr($a,0,180) . ' ...';
+    // mb_substr() метод, который нам поможет красиво обрезать текст не прибегая к циклу
+    $joinLinkInB = mb_split('\s',$b);
+    // split метод использую чтобы преобразовать в массив, для того чтобы поменять 3 последних объекта
+    $saveDelete = [];
+    for ($i=0; $i < 3; $i++) { 
+        $saveDelete[$i] = array_pop($joinLinkInB);
+    }
+    // массивом прохожусь и удаляю 3 последних объекта в массиве
+    $htmlUrl = "<a href='$link'>" . $saveDelete[2] . ' ' . $saveDelete[1] . $saveDelete[0] . "</a>";
+    array_push($joinLinkInB, $htmlUrl);
+    // ну я просто вставляю html объект в массив послднего ряда.
+    echo '1)';
+    foreach ($joinLinkInB as $print) {
+        echo $print . ' ';
+    }
 
-        <div>
-            <div class="name-calc">
-                <p>Калькулятор</p>
-            </div>
 
-            <div class="item-calc-p">
-                <div class="item"><p>Дата оформления вклада</p></div>
-                <div class="item"><p>Сумма вклада</p></div>
-                <div class="item">
-                    <p>Срок вклада</p>
-                </div>
-                <div class="item"><p>Пополнение вклада</p></div>
-                <div class="item"><p>Сумма пополнения вклада</p></div>
-            </div>
-
-            
-
-            <form method="POST" id="calc_form">
-
-                <div class="item-calc-input">
-                    <div><input class="input-refr" type="text" id="datepicker"></div>
-                    <div><input class="input-refr input-sum" id="summVckl" type="text" value="1000"><span class="warrior1"></span></div>
-                    <div>
-                        <select id="selectYear">
-                            <option value="1">1 год</option>
-                            <option value="2">2 года</option>
-                            <option value="3">3 года</option>
-                            <option value="4">4 года</option>
-                            <option value="5">5 лет</option>
-                        </select>
-                    </div>
-                    <div class="input-radio"><input name="radioActive" value="2" type="radio" checked> <span class="radio-text">Нет</span><input value="1" name="radioActive" type="radio" class="radio-style"> <span class="radio-text">Да</span></div>
-
-                    <div><input class="input-refr input-sum-person" id="summAddVckl" type="text" value="0" disabled><span class="warrior2"></span></div>
-                </div>
-
-                <div class="item-calc-scale">
-                    <div class="scale-option">
-                        <input class="range-calc range-num1" id="rangeOne" type="range" value="1000" min="1000" max="3000000" step="1">
-                        <span class="span-rub-under-input-range-right">3 000 000</span>
-                        <span class="span-rub-under-input-range-left">1тыс. руб</span>
-                        <input class="range-calc range-num2" id="rangeTwo" type="range" value="1000"  min="1000" max="3000000" step="1">
-                        <span class="span-rub-under-input-range-right">3 000 000</span>
-                        <span class="span-rub-under-input-range-left">1тыс. руб</span>
-
-                    </div>
-                    <div class="scale-option"></div>
-                </div>
-                
-                <div class="item-button-form">
-                    <input class="input-submit-calc-form" type="button" value="Рассчитать">
-                    <span class="result-calc-text">Результат: </span><span class="result-calc-num">0</span>
-                </div>
-
-            </form>
-        </div>
-    </div>
     
 
 
-    <footer>
-        <a href="#">Кредитные карты</a>
-        <a href="#">Вклады</a>
-        <a href="#">Дебетовая карта</a>
-        <a href="#">Страхование</a>
-        <a href="#">Друзья</a>
-        <a href="#">Интернет-банк</a>
-    </footer>
-    <script src="lib/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+    $filename = "photo.jpg";
+    $percent = 0.5;
+
+
+    $im = 'photo.jpg';
+    $saveIm = "photos/simpletext.jpg"; 
+    echo '<br>2)';
+    // compressImage($im,$saveIm,10);
+    // function compressImage($source_url, $destination_url, $quality) {
+    //     $info = getimagesize($source_url);
+    //     $image = imagecreatefromjpeg($source_url);
+    
+    //     //сохранил суженный файл в папку photos
+    //     imagejpeg($image, $destination_url, $quality);
+    
+    // }
+    echo "<img src='$saveIm'>";
+    echo "3) Результат получится один, но разница в реализации. Если говорить про where, то он ищет данные, join их объединяет по внешним ключам.";
+
+    function countCloneObjInMass($ar, $n)
+    {
+        $count = 0;
+        for ($i = 0; $i < $n - 1; $i++)
+        {
+            if ($ar[$i] == $ar[$i + 1])
+                $count++;
+        }
+        return $count;
+    }
+    $arr = array(1, 2, 2, 3, 4, 15, 4, 4, 5, 5);
+    $sizeObjInMass = sizeof($arr);
+    echo '<br><br>4)Массив:';
+    print_r($arr);
+    echo '<br>Результат задания (Требуется вывести количество последовательных пар одинаковых элементов): ' . countCloneObjInMass($arr, $sizeObjInMass);
+
+
+?>
